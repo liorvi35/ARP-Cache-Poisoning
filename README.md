@@ -9,6 +9,7 @@ To use this MITM-attack program, you need to provide two arguments via flags:
 1.  The IP address of the target you want to change, specified using the `-t` or `--target` flag.
 2.  The IP address of the local gateway (router) you want to set, specified using the `-m` or `--mac` flag.<br/>
 Note: you can get the gateway IP using: `route -n`
+3. You can stop the attack using `CTRL+C`.
 
 To attack the target address, run the following command:<br/>
 `sudo python3 apr_spoofer.py -t <TARGET> -g <GATEWAY>` 
