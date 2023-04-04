@@ -2,7 +2,7 @@
 Man-In-The-Middle Attack
 
 ## Version Log:
-v1.1 (current) - stable, not complete
+v1.2 (current) - stable, not complete
 
 ## Usage
 To use this MITM-attack program, you need to provide two arguments via flags:
