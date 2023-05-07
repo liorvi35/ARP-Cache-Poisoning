@@ -12,6 +12,6 @@ Note: you can get the gateway IP using: `route -n`
 3. You can stop the attack using `CTRL+C`.
 
 To attack the target address, run the following command:<br/>
-`sudo python3 apr_spoofer.py -t <TARGET> -g <GATEWAY>` 
+`sudo python3 Attack.py -t <TARGET> -g <GATEWAY>` 
 
 Replace `<TARGET>` with the IP address of the target you want to attack and `<GATEWAY>` with gateway address.
